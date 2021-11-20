@@ -54,7 +54,7 @@ function ContactForm() {
           value={name}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          placeholder="Jack Sparrow"
+          placeholder="Name"
           onChange={(e) => setName(e.currentTarget.value)}
         />
       </label>
@@ -68,7 +68,7 @@ function ContactForm() {
           value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
-          placeholder="111-11-11"
+          placeholder="068-331-33-39"
           onChange={(e) => setNumber(e.currentTarget.value)}
         />
       </label>
