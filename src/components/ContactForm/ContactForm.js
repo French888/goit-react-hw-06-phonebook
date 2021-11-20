@@ -15,11 +15,11 @@ function ContactForm() {
 
   const contactCheck = () => {
     const namesIsIn = contacts.reduce(
-      (acc, contact) => [...acc, contact.name],
+      (acc, contact) => [contact.name, ...acc],
       []
     );
     const numbersIsIn = contacts.reduce(
-      (acc, contact) => [...acc, contact.number],
+      (acc, contact) => [contact.number, ...acc],
       []
     );
 
