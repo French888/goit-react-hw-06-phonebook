@@ -1,0 +1,32 @@
+.form {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--secondaryTextColor);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.input:focus {
+  outline-color: var(--accentColor);
+}
+
+.btn:hover {
+  opacity: 1;
+}

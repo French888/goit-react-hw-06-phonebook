@@ -1,82 +1,61 @@
-import React, { Component } from "react";
-import ContactsForm from "./components/ContactsForm";
-// import ContactsList from "./components/ContactsList";
-import Container from "./components/Container";
-// import Filter from "./components/Filter/Filter";
+// import React, { Component } from "react";
+import ContactForm from "./components/ContactForm/ContactForm";
+import ContactList from "./components/ContactList/ContactList";
+import Container from "./components/Container/Container";
+import Filter from "./components/Filter/Filter";
+import { getVisibleContacts } from "./redux/app/app-selectors";
 
-class App extends Component {
-  state = {
-    // contacts: [
-    //   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-    //   { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-    //   { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-    //   { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-    // ],
-    // filter: "",
-  };
+// import appActions from "./redux/app/app-actions";
+import { useSelector } from "react-redux";
 
-  // handleChange = (event) => {
-  //   const { name, value } = event.currentTarget;
-  //   this.setState({ [name]: value });
-  // };
+export default function App() {
+  const contacts = useSelector(getVisibleContacts);
+  const totalContactsCount = contacts.length;
 
-  // // contact.name  имя обьекта === name из инпута
-  // hasContacts = (name) => {
-  //   return this.state.contacts.some((contact) => {
-  //     return contact.name.toLocaleLowerCase() === name.toLocaleLowerCase();
-  //   });
-  // };
-
-  // // вызываем hasContact где найденое имя массива совпадает
-  // // с именем введенным в инпут то if (false) не выполнится будет алерт
-
-  // addContact = (contact) => {
-  //   if (!this.hasContacts(contact.name)) {
-  //     this.setState(({ contacts }) => ({
-  //       contacts: [contact, ...contacts],
-  //     }));
-  //   } else {
-  //     alert(`${contact.name} is already in contacts`);
-  //   }
-  // };
-
-  // findContact = () => {
-  //   const { filter, contacts } = this.state;
-  //   const normalizedFilter = filter.toLocaleLowerCase();
-  //   return contacts.filter((contact) =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-
-  // changeFilter = (e) => {
-  //   this.setState({ filter: e.currentTarget.value });
-  // };
-
-  // deleteContact = (contactId) => {
-  //   this.setState((prevState) => ({
-  //     contacts: prevState.contacts.filter(
-  //       (contact) => contact.id !== contactId
-  //     ),
-  //   }));
-  // };
-
-  render() {
-    // const visibleContact = this.findContact();
-    return (
-      <Container>
-        <h1> PhoneBook </h1>
-        <ContactsForm
-        // onSubmit={this.addContact}
-        />
-
-        <div>
-          <h2> Contacts </h2>
-          {/* <Filter value={this.state.filter} onChange={this.changeFilter} /> */}
-          <ContactsList />
-        </div>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <h1>Phonebook</h1>
+      <ContactForm />
+      <h2>Contacts</h2>
+      <p>Общее кол-во: {totalContactsCount}</p>
+      <Filter />
+      <ContactList />
+    </Container>
+  );
 }
+// class App extends Component {
+//   filterArr = (fArr) => {
+//     let newArr = fArr.filter((cur) =>
+//       cur.name.toUpperCase().includes(this.props.filter)
+//     );
+//     return newArr;
+//   };
 
-export default App;
+//   render() {
+//     return (
+//       <Container>
+//         <div className="App">
+//           <h1>Phonebook</h1>
+//           <ContactForm onSubmitData={this.props.formSubmitHandler} />
+//           <h1>Contacts</h1>
+//           <Filter setFilterToState={this.props.filterSet} />
+//           <ContactList
+//             contacts={this.filterArr(this.props.contacts)}
+//             del={this.props.contactDelete}
+//           />
+//           </div>
+//       </Container>
+//     );
+//   }
+// }
+// const mapStateToProps = (state) => ({
+//   contacts: state.app.contacts,
+//   filter: state.app.filter,
+// });
+// const mapDispatchToProrps = (dispatch) => ({
+//   formSubmitHandler: (contactData) =>
+//     dispatch(appActions.addContact(contactData)),
+//   contactDelete: (contactId) => dispatch(appActions.deleteContact(contactId)),
+//   filterSet: (str) => dispatch(appActions.filterSet(str)),
+// });
+// export default connect(mapStateToProps, mapDispatchToProrps)(App);
